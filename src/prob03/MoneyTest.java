@@ -8,6 +8,8 @@ public class MoneyTest {
         Money three = new Money( 3 );
         Money ten   = new Money( 10 );
         
+        System.out.println(five.minus( two ));
+        
         if(    five.equals( two.add( three ) )
             && three.equals( five.minus( two ) )
             && ten.equals( five.multiply( two ) )
