@@ -7,13 +7,17 @@ public class Gugudan {
 	static int resultNumber = 0;
 	
 	public static void main( String[] args ) {
+		//곱할 숫자 
 		int l = randomize( 1, 9 );
 		int r = randomize( 1, 9 );
 		
+		//답
 		resultNumber = l * r;
 
+		
 		int[] answerNumbers = randomizeAnswers();
 		int loc = randomize( 0, 8 );
+		//9개의 랜덤숫자중 한 곳에 답 넣기
 		answerNumbers[ loc ] = resultNumber;
 		
 		System.out.println( l + " x " + r + " = ?" );
@@ -29,13 +33,27 @@ public class Gugudan {
 			System.out.print( answerNumbers[ i ] );
 		}
 
-		System.out.print( "\n\n" );
-		System.out.print( "answer:" );
 
-		Scanner s = new Scanner( System.in );
+
+
 		//
 		//  이 부분에 적당한 코드를 작성합니다.  
 		//
+	
+		while(true) {
+			System.out.print( "\n" );
+			System.out.print( "answer:" );
+			Scanner s = new Scanner( System.in );
+			int myAnswer = s.nextInt();
+			
+			if(resultNumber == myAnswer) {
+				System.out.println("정답");
+				break;
+			}else {
+				System.out.println("오답");
+			}
+		}
+	
 	}
 
 	private static int randomize( int lNum, int rNum ) {
@@ -49,15 +67,15 @@ public class Gugudan {
 		final int MAX_ANSWER_NUMBER = 81;
 		
 		int[] boardNumbers = new int[ COUNT_ANSWER_NUMBER ];
-		int occupied = 0;
+		int occupied = 0; // 0 ~ 8
 		
 		while( occupied < COUNT_ANSWER_NUMBER ) {
 			
-	        int random = ( int )( Math.random() * MAX_ANSWER_NUMBER ) + 1;
+	        int random = ( int )( Math.random() * MAX_ANSWER_NUMBER ) + 1; // 81까지 랜덤값
 	        
 	        boolean evaluted = false;
 	        for( int i = 0; i < occupied; i++ ) {
-	        	if( /* 이 부분에 적당 조건의 코드를 입력 합니다. */ ) {
+	        	if( boardNumbers[i] == random ) {
 	        		evaluted = true;
 	        		break;
 	        	}
