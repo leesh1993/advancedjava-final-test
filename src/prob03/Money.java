@@ -16,35 +16,32 @@ public class Money {
 		this.amount = amount;
 	}
 
-	public Object add(Money money) {
-		if(money instanceof Money) {		
-			return this.amount + money.getAmount();
-		}else {
-			return null;
-		}
+	public Object add(Money money) {	
+			return new Money(this.amount + money.getAmount());
 	}
 
-	public Object minus(Money money) {
-		if(money instanceof Money) {		
-			return this.amount - money.getAmount();
-		}else {
-			return null;
-		}
+	public Object minus(Money money) {	
+			return new Money(this.amount - money.getAmount());
+
 	}
 
-	public Object multiply(Money money) {
-		if(money instanceof Money) {		
-			return this.amount * money.getAmount();
-		}else {
-			return null;
-		}
+	public Object multiply(Money money) {	
+			return new Money(this.amount * money.getAmount());
+
 	}
 
-	public Object devide(Money money) {
-		if(money instanceof Money) {		
-			return this.amount / money.getAmount();
-		}else {
-			return null;
+	public Object devide(Money money) {	
+			return new Money(this.amount / money.getAmount());
+	}
+
+	@Override
+	public boolean equals(Object obj) {
+		if(obj instanceof Money) {
+			return (this.amount == ((Money) obj).getAmount());
 		}
-	}  
+		return false;
+	}
+	
+	
+
 }

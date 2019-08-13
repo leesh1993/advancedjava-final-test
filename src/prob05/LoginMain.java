@@ -23,6 +23,17 @@ public class LoginMain {
 		 *  로그인 처리 부분을 완성 합니다.
 		 */
 		
+		User user = new User(id, password);
+		
+		try {
+			login(joinUsers,user);
+		} catch (UserNotFoundException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} catch (PasswordDismatchException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
 
 	}
 	
@@ -34,7 +45,7 @@ public class LoginMain {
 		User savedUser = users.get( users.indexOf( user ) );
 		
 		if( !savedUser.getPassword().equals( user.getPassword()) ){
-			throw new PasswordDismatchException();
+			throw new PasswordDismatchException("비밀번호가 틀렸습니다.");
 		}
 	}
 }
